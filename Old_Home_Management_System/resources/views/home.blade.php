@@ -1,11 +1,13 @@
 @extends('layouts.header_footer')
 
-@section('title', 'Template Test')
+@section('title', 'Home Page')
 
 @section('content')
 <div class="card">
-    <h2>Template & CSS Test</h2>
-    <p>If you see the dark background, styled navbar, footer, and this card box, your Blade template and CSS are connected.</p>
+    <h2>Welcome to The Old Home Management System</h2>
+    <p>Would you like to create an Account or Login?</p>
     <br>
+    <a href="/register" class="btn">Create Account</a>
+    <a href="/login" class="btn">Login</a>
 </div>
 @endsection
