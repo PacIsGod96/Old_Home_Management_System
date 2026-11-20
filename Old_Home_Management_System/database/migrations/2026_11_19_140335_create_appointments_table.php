@@ -12,8 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->increments('AppointmentID');
+
+            //Regular Columns
+            $table->date('AppointmentDate');
+
+            //Foreign Key
+            $table->unsignedInteger('PatientID');
+            $table->unsignedInteger('DoctoreID');
+            
+            $table->foreign('PatientID')
+                  ->references('PatientID')
+                  ->on('patients');
+
+            $table->foreign('EmployeeID')
+                  ->references('EmployeeID')
+                  ->on('employees');
         });
     }
 

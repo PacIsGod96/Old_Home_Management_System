@@ -12,8 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('roster_caregiver', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->increments('RosterCaregiverID');
+
+            //Regular Column
+            $table->string('PatientGroup');
+
+            //Foreign Key
+            $table->unsignedInteger('RosterID');
+            $table->unsignedInteger('CaregiverID');
+
+            $table->foreign('RosterID')
+                  ->references('RosterID')
+                  ->on('roster');
+
+            $table->foreign('CaregiverID')
+                  ->references('EmployeeID')
+                  ->on('employees');
         });
     }
 

@@ -27,4 +27,14 @@ class User extends Model
     {
         return $this->belongsTo(Role::class, 'RoleID','RoleID');
     }
+
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'PatientID', 'UserID');
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employees::class, 'EmployeeID', 'UserID');
+    }
 }

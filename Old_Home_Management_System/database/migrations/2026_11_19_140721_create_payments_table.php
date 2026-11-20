@@ -12,8 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->increments('PaymentID');
+
+            //Regular Columns
+            $table->decimal('AmmountPaid', 10, 2);
+            $table->date('PaymentDate');
+
+            //Foreign Key
+            $table->unsignedInteger('PatientID');
+            
+            $table->foreign('PatientID')
+                  ->references('PatientID')
+                  ->on('patients');
         });
     }
 

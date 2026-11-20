@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->unsignedInteger('EmployeeID')->primary();
+
+            //Regular Columns
+            $table->decimal('Salary', 10, 2)->default(0);
+
+            //Foreign Key
+            $table->foreign('EmployeeID')
+                  ->references('UserID')
+                  ->on('users');
         });
     }
 

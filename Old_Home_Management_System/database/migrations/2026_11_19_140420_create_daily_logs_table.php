@@ -12,8 +12,29 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('daily_logs', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->increments('LogID');
+
+            //Regular Columns
+            $table->date('LogDate');
+            $table->boolean('MorningMedTaken')->nullable();
+            $table->boolean('AfternoonMedTaken')->nullable();
+            $table->boolean('NightMedTaken')->nullable();
+            $table->string('Breakfast');
+            $table->string('Lunch');
+            $table->string('Dinner');
+
+            //Foreign Key
+            $table->unsignedInteger('PatientID');
+            $table->unsignedInteger('CaregiverID');
+            
+            $table->foreign('PatientID')
+                  ->references('PatientID')
+                  ->on('patients');
+
+            $table->foreign('EmployeeID')
+                  ->references('EmployeeID')
+                  ->on('employees');
         });
     }
 

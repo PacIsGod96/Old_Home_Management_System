@@ -12,8 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('patient_balance', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->unsignedInteger('PatientID')->primary();
+
+            //Regular Columns
+            $table->decimal('TotalDue', 10, 2)->default(0);
+            $table->date('LastUpdated');
+
+            //Foreign Key
+            $table->foreign('PatientID')
+                  ->references('PatientID')
+                  ->on('patients');
         });
     }
 
