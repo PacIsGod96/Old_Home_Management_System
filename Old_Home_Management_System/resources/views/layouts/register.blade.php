@@ -23,19 +23,19 @@
 
         <div class="form-group">
             <label for="name">First Name</label>
-            <input type="text" id="name" name="name" value="name" required>
+            <input type="text" id="name" name="name" value="" required>
         </div>
         <div class="form-group">
             <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" value="last_name" required>
+            <input type="text" id="last_name" name="last_name" value="" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="email" required>
+            <input type="email" id="email" name="email" value="" required>
         </div>
         <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" value="phone" required>
+            <input type="tel" id="phone" name="phone" value="" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
@@ -43,7 +43,7 @@
         </div>
         <div class="form-group">
             <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" value="dob" required>
+            <input type="date" id="dob" name="dob" value="" required>
         </div>
 
         <!-- if the Patient role is picked -->
