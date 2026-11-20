@@ -12,8 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->unsignedInteger('PatientID')->primary();
+
+            //Regular Columns
+            $table->string('FamilyCode');
+            $table->string('EmergencyContact');
+            $table->string('EmergencyContactName');
+            $table->string('RelationContact');
+            $table->string('PatientGroup');
+            $table->date('AdmissionDate');
+
+            //Foreign Key
+            $table->foreign('PatientID')
+                  ->references('UserID')
+                  ->on('users');
         });
     }
 
