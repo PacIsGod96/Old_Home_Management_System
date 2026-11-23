@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('LastName');
             $table->string('Email')->unique();
             $table->string('Phone');
-            $table->string('password');
+            $table->string('Password');
             $table->date('DOB');
             $table->boolean('IsApproved')->default(false);
 
             //Foreign Key
             $table->unsignedInteger('RoleID');
-            
+
             $table->foreign('RoleID')
                   ->references('RoleID')
                   ->on('roles');

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Appointment extends Model
 {
@@ -13,11 +14,23 @@ class Appointment extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'AppointmentID',
         'PatientID',
-        'DoctoreID',
+        'DoctorID',
         'AppointmentDate'
     ];
 
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'PatientID', 'PatientID');
+    }
 
+    public function employee()
+    {
+        return $this->belongsTo(Employees::class, 'DoctorID', 'EmployeeID');
+    }
+
+    public function prescription()
+    {
+        return $this->hasOne(Prescription::class, 'AppointmentID', 'AppointmentID');
+    }
 }

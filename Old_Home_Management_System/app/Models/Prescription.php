@@ -13,7 +13,6 @@ class Prescription extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'PrescriptionID',
         'AppointmentID',
         'Date',
         'Comment',
@@ -22,5 +21,8 @@ class Prescription extends Model
         'NightMed'
     ];
 
-
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class, 'AppointmentID', 'AppointmentID');
+    }
 }
