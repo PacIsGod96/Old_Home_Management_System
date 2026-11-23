@@ -13,12 +13,23 @@ class Roster extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'RosterID',
         'SupervisorID',
         'DoctorID',
-        'RosterID',
         'RosterDate'
     ];
 
+    public function employeeSupervisor()
+    {
+        return $this->belongsTo(Employees::class, 'SupervisorID', 'EmployeeID');
+    }
 
+    public function employeeDoctor()
+    {
+        return $this->belongsTo(Employees::class, 'DoctorID', 'EmployeeID');
+    }
+
+    public function rosterCaregivers() 
+    {
+        return $this->hasMany(RosterCaregiver::class, 'RosterID', 'RosterID');
+    }
 }

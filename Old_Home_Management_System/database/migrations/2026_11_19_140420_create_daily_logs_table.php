@@ -27,12 +27,12 @@ return new class extends Migration
             //Foreign Key
             $table->unsignedInteger('PatientID');
             $table->unsignedInteger('CaregiverID');
-            
+
             $table->foreign('PatientID')
                   ->references('PatientID')
                   ->on('patients');
 
-            $table->foreign('EmployeeID')
+            $table->foreign('CaregiverID')
                   ->references('EmployeeID')
                   ->on('employees');
         });

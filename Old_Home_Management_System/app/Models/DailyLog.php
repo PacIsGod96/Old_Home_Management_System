@@ -13,7 +13,6 @@ class DailyLog extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'LogID',
         'PatientID',
         'CaregiverID',
         'LogDate',
@@ -25,5 +24,13 @@ class DailyLog extends Model
         'Dinner'
     ];
 
-    
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'PatientID', 'PatientID');
+    }
+
+    public function caregiver()
+    {
+        return $this->belongsTo(Employees::class, 'CaregiverID', 'EmployeeID');
+    }
 }
