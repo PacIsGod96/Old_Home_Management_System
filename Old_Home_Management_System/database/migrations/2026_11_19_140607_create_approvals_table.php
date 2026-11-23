@@ -12,8 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('approvals', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->increments('ApprovalID');
+
+            //Regular Columns
+            $table->date('ApproveDate');
+            $table->boolean('IsApproved')->default(false);
+
+            //Foriegn Key
+            $table->unsignedInteger('UserID');
+            $table->unsignedInteger('ApprovedBy');
+            
+            $table->foreign('UserID')
+                  ->references('UserID')
+                  ->on('users');
+
+            $table->foreign('ApprovedBy')
+                  ->references('UserID')
+                  ->on('users');
         });
     }
 

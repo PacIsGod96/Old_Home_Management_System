@@ -19,13 +19,14 @@ return new class extends Migration
             $table->string('FirstName');
             $table->string('LastName');
             $table->string('Email')->unique();
-            $table->string('Phone')->nullable();
-            $table->string('password');
-            $table->date('DOB')->nullable();
+            $table->string('Phone');
+            $table->string('Password');
+            $table->date('DOB');
             $table->boolean('IsApproved')->default(false);
 
             //Foreign Key
             $table->unsignedInteger('RoleID');
+
             $table->foreign('RoleID')
                   ->references('RoleID')
                   ->on('roles');

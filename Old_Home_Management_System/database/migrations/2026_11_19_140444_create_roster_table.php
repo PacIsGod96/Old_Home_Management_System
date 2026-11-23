@@ -12,8 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('roster', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            //Primary Key
+            $table->increments('RosterID');
+
+            //Regular Columns
+            $table->date('RosterDate');
+
+            //Foreign Key
+            $table->unsignedInteger('SupervisorID');
+            $table->unsignedInteger('DoctorID');
+
+            $table->foreign('SupervisorID')
+                  ->references('EmployeeID')
+                  ->on('employees');
+
+            $table->foreign('DoctorID')
+                  ->references('EmployeeID')
+                  ->on('employees');
         });
     }
 
