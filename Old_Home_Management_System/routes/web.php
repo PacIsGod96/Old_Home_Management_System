@@ -13,3 +13,7 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('layouts.login');
 });
+
+Route::get('/caregiver', function () {
+    return view('layouts.caregiverPage');
+});
